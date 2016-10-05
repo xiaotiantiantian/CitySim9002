@@ -6,21 +6,27 @@
 package Program;
 
 import Domain.Validator;
+import java.util.Random;
 
 /**
  *
  * @author AsphaltPanthers
  */
 public class CitySim9002 {
+
     public static String errorMessage = "Please enter one integer argument, seed";
-    
-    public static int main(String[] args) {
+
+    public static void main(String[] args) {
         if (new Validator().validateArguments(args)) {
-            return 0;
-        }
-        else {
+            PeopleGenerator gen = new PeopleGenerator(Integer.parseInt(args[0]));
+//            Random rand = new Random(System.currentTimeMillis()+seed);
+//            return 0;(java could not return int in main method)
+            //just use system.exit
+            System.exit(0);
+        } else {
             System.out.println(errorMessage);
-            return -1;
+//            return -1;
+            System.exit(-1);
         }
     }
 }
