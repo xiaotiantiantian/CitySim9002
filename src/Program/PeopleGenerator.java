@@ -16,17 +16,43 @@ import java.util.Random;
 public class PeopleGenerator {
 
     private People people;
-    
-    public PeopleGenerator(int seed) {
-        people = new People();
-        Random rand = new Random(System.currentTimeMillis() + seed);
-        int i = rand.nextInt(3) + 1;
-        People.VisitorType vt = People.VisitorType.fromCode(i);
-        List<Integer> PersonAlreadyGenerated = new ArrayList<Integer>();
+    public int numbers;
 
-        while (PersonAlreadyGenerated.size() < 5) {
-            people.Visit(vt, seed, PersonAlreadyGenerated.size()+1);
-            PersonAlreadyGenerated.add(i);
-        }
+    public PeopleGenerator(int seed) {
+        numbers = 0;
+        this.Generator(seed);
     }
+
+    public int Generator(int seed) {
+        people = new People();
+
+        int i = GenerateRandomInt(seed + (int) System.currentTimeMillis());
+        People.VisitorType vt = People.VisitorType.fromCode(i);
+//        List<Integer> PersonAlreadyGenerated = new ArrayList<Integer>();
+
+//        while (PersonAlreadyGenerated.size() < 5) {
+        while (numbers < 5) {
+            people.Visit(vt, i, numbers + 1);
+//            PersonAlreadyGenerated.add(i);
+            numbers++;
+        }
+
+        if (numbers> 5) {
+            System.out.println("Error people more than 5");
+            return -1;
+        }
+
+        return 0;
+    }
+
+    public int GenerateRandomInt(int seed) {
+        Random rand = new Random(seed);
+        //control the range from 1-4
+        int i = rand.nextInt(3) + 1;
+        return i;
+    }
+
+//    public boolean ControlPersonNumber(int p){
+//        
+//    }
 }

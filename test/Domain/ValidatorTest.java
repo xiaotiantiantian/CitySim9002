@@ -5,7 +5,11 @@
  */
 package Domain;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -13,23 +17,30 @@ import org.junit.Test;
  * @author AsphaltPanthers
  */
 public class ValidatorTest {
+
+
+
     @Test
     public void ifOneArgumentIsProvidedReturnTrue() {
-        Assert.assertTrue(new Validator().validateNumberOfArguments(new String[] { "1" }));
+        Assert.assertTrue(new Validator().validateNumberOfArguments(new String[]{"1"}));
     }
-    
+
     @Test
     public void ifOneArgumentIsNotProvidedReturnFalse() {
-        Assert.assertFalse(new Validator().validateNumberOfArguments(new String[] { "1", "2" }));
+        Assert.assertFalse(new Validator().validateNumberOfArguments(new String[]{"1", "2"}));
     }
-    
+
     @Test
     public void ifArgumentIsAnIntegerReturnTrue() {
-        Assert.assertTrue(new Validator().validateArgumentType(new String[] { "1" }));
+        Assert.assertTrue(new Validator().validateArgumentType(new String[]{"1"}));
     }
-    
+
     @Test
     public void ifArgumentIsNotAnIntegerReturnFalse() {
-        Assert.assertFalse(new Validator().validateArgumentType(new String[] { "test" }));
+        Assert.assertFalse(new Validator().validateArgumentType(new String[]{"test"}));
     }
+
+  
+
+   
 }

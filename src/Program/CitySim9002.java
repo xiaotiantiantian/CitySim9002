@@ -11,6 +11,7 @@ import java.util.Random;
 /**
  *
  * @author AsphaltPanthers
+ * @author Zhirun Tian
  */
 public class CitySim9002 {
 
@@ -19,13 +20,9 @@ public class CitySim9002 {
     public static void main(String[] args) {
         if (new Validator().validateArguments(args)) {
             PeopleGenerator gen = new PeopleGenerator(Integer.parseInt(args[0]));
-//            Random rand = new Random(System.currentTimeMillis()+seed);
-//            return 0;(java could not return int in main method)
-            //just use system.exit
             System.exit(0);
         } else {
             System.out.println(errorMessage);
-//            return -1;
             System.exit(-1);
         }
     }
